@@ -72,12 +72,13 @@ static CGFloat bootomHeight = 300.f;
     
     [self.bottomView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [UIView animateWithDuration:kAnimationDuration delay:idx * 0.03 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            obj.snf_y -= bootomHeight;
+            obj.snf_y -= bootomHeight - 10;
             obj.transform = CGAffineTransformMakeScale(1.2, 1.2);
             obj.alpha = 1;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:kAnimationDuration animations:^{
                 obj.transform = CGAffineTransformMakeScale(1, 1);
+                obj.snf_y += 10;
             }];
         }];
     }];
